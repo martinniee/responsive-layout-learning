@@ -71,5 +71,125 @@
 </html>
 ```
 
+### 常用参数
 
+浏览器与设备
+
+1. 浏览器：width, height
+2. 设备：device-width, device-height
+
+
+
+案例1：根据浏览器尺寸不同，决定元素显示颜色
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <style>
+        #div0{
+            width: 200px;
+            height: 200px;
+        }
+        /* 表示在浏览器屏幕尺寸 在 500px ~ 700px 之间生效 */
+        @media screen and (min-width:500px) and (max-width:700px){
+            #div0{
+                background-color: red;
+            }
+        } 
+        /* 表示在浏览器屏幕尺寸 > 701px 生效 */
+        @media screen and (min-width:701px){
+            #div0{
+                background-color: blue;
+            }
+        } 
+       
+    </style>
+</head>
+<body>
+    <div id="div0"></div>
+</body>
+</html>
+```
+
+案例2：根据浏览器宽度（尺寸）决定元素排列方式
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <style>
+        #div0 {
+            width: 100%;
+            height: 500px;
+        }
+        
+        #div0 div {
+            float: left;
+            height: 100px;  
+        }
+        /* 1行三个div */
+        @media screen and (min-device-width:400px){
+            #div0 div {
+                width: 33.3%;
+            }
+            #div0 div:nth-child(1) {
+                background-color: red;
+            }
+            #div0 div:nth-child(2) {
+                background-color: blue;
+            }
+            #div0 div:nth-child(3) {
+                background-color: green;
+            }
+        }
+        /* 2行三个div */
+        @media screen and (min-device-width:300px) and (max-device-width:399px) {
+            #div0 div {
+                width: 50%;
+            }
+            #div0 div:nth-child(1) {
+                background-color: red;
+            }
+            #div0 div:nth-child(2) {
+                background-color: blue;
+            }
+            #div0 div:nth-child(3) {
+                background-color: green;
+            }
+        }
+        /* 3行三个div */
+        @media screen and (min-device-width:200px) and (max-device-width:299px) {
+            #div0 div {
+                width: 100%;
+            }
+            #div0 div:nth-child(1) {
+                background-color: red;
+            }
+            #div0 div:nth-child(2) {
+                background-color: blue;
+            }
+            #div0 div:nth-child(3) {
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="div0">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
+```
 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <style>
+        #div0{
+            width: 200px;
+            height: 200px;
+        }
+        /* 表示在浏览器屏幕尺寸 在 500px ~ 700px 之间生效 */
+        @media screen and (min-width:500px) and (max-width:700px){
+            #div0{
+                background-color: red;
+            }
+        } 
+        /* 表示在浏览器屏幕尺寸 > 701px 生效 */
+        @media screen and (min-width:701px){
+            #div0{
+                background-color: blue;
+            }
+        } 
+       
+    </style>
+</head>
+<body>
+    <div id="div0"></div>
+</body>
+</html>
