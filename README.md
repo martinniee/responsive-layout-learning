@@ -205,7 +205,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>媒体查询</title>
-    <!-- 提取gong'gong样式 -->
+    <!-- 提取公共样式 -->
     <style>
         #div0 {
             width: 100%;
@@ -271,5 +271,101 @@
     </div>
 </body>
 </html>
+```
+
+### 引入方式2
+
+对案例2的改进-采用外部css样式
+
+**1，HTML部分**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <!-- 引入公共样式 common.css -->
+    <link rel="stylesheet" href="./css/common.css" >
+    <!-- 引入媒体查询 样式 css1.css -->
+    <link rel="stylesheet" href="./css/css1.css" media="(min-device-width:200px) and (max-device-width:299px)">
+    <!-- 引入媒体查询 样式 css2.css -->
+    <link rel="stylesheet" href="./css/css2.css" media="(min-device-width:300px) and (max-device-width:399px)">
+    <!-- 引入媒体查询 样式 css3.css -->
+    <link rel="stylesheet" href="./css/css3.css" media="(min-device-width:400px)">
+</head>
+<body>
+    <div id="div0">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
+```
+
+**2，CSS部分**
+
+文件结构说明
+
+```bash
+.
+├── css/
+│   ├── common.css
+│   ├── css1.css
+│   ├── css2.css
+│   └── css3.css
+└── 04_media_query.html
+```
+
+```css
+/* common.css */
+/* 公共样式css */
+#div0 {
+    width: 100%;
+    height: 500px;
+}
+#div0 div {
+    float: left;
+    height: 100px;
+}
+/* 子元素背景 */
+#div0 div:nth-child(1) {
+    background-color: red;
+}
+#div0 div:nth-child(2) {
+    background-color: blue;
+}
+#div0 div:nth-child(3) {
+    background-color: green;
+}
+```
+
+```css
+/* css1.css */
+/* 3行三个div */
+#div0 div {
+    width: 100%;
+}
+```
+
+
+```css
+/* css2.css */
+/* 2行三个div */
+#div0 div {
+    width: 50%;
+}
+```
+
+
+```css
+/* css3.css */
+/* 1行三个div */
+#div0 div {
+    width: 33.3%;
+}
 ```
 
