@@ -784,3 +784,70 @@ HTML
 总结：只会对设置了 `grow/shrink `的元素进行额外计算（扩充/缩减）。
 - 如果元素设置了初始值（有 flex-basis值），则 `最终的宽度 = 元素宽度 +/- p * 所占份数`
 - 如果元素**没有设置初始值**（没有 flex-basis值），则 `最终的宽度 = 剩余/超出宽度 +/- p * 所占份数`
+
+### 课堂案例2-长表单布局
+
+初始效果：
+
+![image-20230603061341910](assets/README-images/image-20230603061341910.png)
+
+设置响应式布局后：
+
+![image-20230603063537180](assets/README-images/image-20230603063537180.png)
+
+HTML
+
+```html
+<form>
+    <div id="form">
+        <div>
+            <label>姓名：</label>
+            <input type="text">
+        </div>
+        <div>
+            <label>请输入密码：</label>
+            <input type="text">
+        </div>
+        <div>
+            <label>请再再再输入密码：</label>
+            <input type="text">
+        </div>
+    </div>
+</form>
+```
+
+CSS
+
+```css
+#form div{
+    display: flex;
+    /* 目的：设置两个输入组件上下间距 */
+    /* 1. 使用 margin  */
+    /* margin-top: 10px; */
+    /* height: 30px; */
+    /* 自适应（默认）  stretch*/
+    align-items: flex-start;
+    flex:  0 0 30px;
+}
+#form div label{
+    flex: 0 0 140px;
+    text-align: right;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+}
+```
+
+布局示意图：
+
+![image-20230603064624576](assets/README-images/image-20230603064624576.png)
+
+⚠️ 注意事项：
+
+```css
+flex : 0 0 30px 
+```
+
+`30px` 表示是元素在 **主轴**方向上的长度。主轴是x，则表示宽度，否则表示高度。
