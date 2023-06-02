@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局</title>
+    <style>
+        #div0 {
+            display: flex;
+            width: 400px;
+            height: 500px;
+            background-color: violet;
+        }
+
+        #div0 div {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            /* 
+                一，flex-basis  
+                CSS 属性 flex-basis 指定了 flex 元素在主轴方向上的初始大小。
+                如果不使用 box-sizing 改变盒模型的话，那么这个属性就决定了 flex 元素的内容盒（content-box）的尺寸。
+                1，flex-basis属性值的几种类型
+                - px 像素：设置子元素的初始值
+                - % 百分比：将百分比x父元素宽度得到的值作为初始值
+
+                2，flex-basis设置方式
+                1. 统一在父元素选择器中给所有在子元素设置（会均衡）
+                2. 单独在不同的子元素的选择器中设置
+            */
+            /* flex-basis: 30%; */
+        }
+
+        #div0 div:nth-child(1) {
+            /* flex-basis: 50px; */
+            /*   flex-basis: 300px; */
+            /* 
+            二，flex-grow 
+            作用：设置弹性盒子的扩展比例
+            适用条件：父元素宽度 - 所有子元素（设置了flex-basis）的宽度之和 > 0 , 也就是 有剩余的空间的情况。如果 <0 ,就是所有子元素宽度 > 父元素宽度，而会导致子元素溢出（超出）父元素区域。
+            > ⚠️ 注意：元素默认设置有 `flex-shrink`属性，会自动进行平衡，若 是`<0`的情况，会自动重新计算子元素宽度，保证 最终的所有的 子元素宽度  = 父元素宽度。因此想要看到 “溢出”的效果，需要设置 `flex-shrink:0`来移除默认的样式。
+            1，flex-grow 算法
+            剩余宽度 = (父元素宽度 - 所有子元素宽度) / 总份数 
+            子元素的最终宽度 = 实际宽度 + ( 剩余宽度 * 子元素所占份数)
+             */
+            /*    flex-grow: 1;
+            flex-shrink: 1; */
+            /* 
+            三，flex-shrink
+                
+            算法：和 flex-grow 类似，不过 元素默认有 flex-shrink 属性，自动进行了处理。
+            适用条件：父元素宽度 - 所有子元素（设置了flex-basis）的宽度之和 <  0 , 就是所有子元素宽度 > 父元素宽度，而会导致子元素溢出（超出）父元素区域。
+            超出的宽度 = 所有子元素宽度之和 - 父元素宽度
+            子元素最终宽度 = 实际宽度 -  ( 超出的宽度 * 子元素所占份数 )
+            
+            */
+            /* 
+            flex属性：用来将 flex-basis,flex-grow, flex-shrink属性简化在一起书写
+            格式：flex: <flex-grow> <flex-shrink> <flex-basis>
+            例子：flex: 4 3 300px;
+            */
+            /* flex: 1 1 300px; */
+
+        }
+
+        #div0 div:nth-child(2) {
+            /* flex-basis: 100px; */
+            /*    flex-basis: 300px;
+            flex-grow: 4;
+            flex-shrink: 3; */
+            /* flex: 4 3 300px; */
+        }
+
+        span {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div0">
+        <div></div>
+        <div></div>
+    </div>
+
+    <hr>
+
+    <button class="btn-normal">正常效果</button>
+    <span class="s0">第一个子元素宽度为 200px, 第二个子元素宽度为 200px</span> <br>
+    <button class="btn-grow">当 flex-grow 成立的效果：有剩余，填充父元素</button>
+    <span class="s1">第一个子元素宽度为 100px, 第二个子元素宽度为 300px</span> <br>
+    <button class="btn-shrink">当 flex-shrink 成立的效果：有超出，填充父元素 </button>
+    <span class="s2">第一个子元素宽度为 250px , 第二个子元素宽度为 150px </span> <br>
+    <script>
+
+        // 第1个子元素
+        const subDiv1 = document.querySelector('#div0 div:nth-child(1)');
+        // 第2个子元素
+        const subDiv2 = document.querySelector('#div0 div:nth-child(2)');
+
+        // 第0个span
+        const s0 = document.querySelector('.s0');
+        // 第1个span
+        const s1 = document.querySelector('.s1');
+        // 第2个span
+        const s2 = document.querySelector('.s2');
+
+        document.querySelector('.btn-normal').addEventListener('click', () => {
+            s0.style.display = 'inline';
+            s1.style.display = 'none';
+            s2.style.display = 'none';
+            subDiv1.setAttribute('flex', '');
+            subDiv2.setAttribute('flex', '');
+            subDiv1.style.setProperty('width', '200px');
+            subDiv1.style.setProperty('width', '200px');
+        })
+        document.querySelector('.btn-grow').addEventListener('click', () => {
+            subDiv1.style.setProperty('flex', '1 1 50px');
+            subDiv2.style.setProperty('flex', '4 1 100px');
+            s0.style.display = 'none';
+            s2.style.display = 'none';
+            s1.style.display = 'inline';
+        })
+        document.querySelector('.btn-shrink').addEventListener('click', () => {
+            subDiv1.style.setProperty('flex', '1 1 300px');
+            subDiv2.style.setProperty('flex', '1 3 300px');
+            s0.style.display = 'none';
+            s1.style.display = 'none';
+            s2.style.display = 'inline';
+        })
+    </script>
+</body>
+
+</html>
