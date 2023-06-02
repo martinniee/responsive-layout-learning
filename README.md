@@ -384,3 +384,77 @@ FlexiableBox即是**弹性盒子**，用来进行弹性布局，可以配合rem�
 flex布局结构示意图：
 
 ![image-20230531164115955](assets/README-images/image-20230531164115955.png)
+
+
+
+### 主轴方向与换行
+
+**1，主轴方向**
+
+`flex-direction` 属性: 决定**元素在父元素盒子中的排列方式**
+
+- row ：默认值, 元素 **从左到右**顺序显示
+- row-reverse： 与 row 相反 元素从右到左顺序显示
+- column ：元素 **从上到下**顺序显示
+- column-reverse： 与 column 相反， 元素从下到上顺序显示
+
+HTML
+
+```html
+<div id="div0">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+</div>
+```
+
+CSS
+
+```css
+/* 设置父元素样式 */
+#div0{
+    width: 500px;
+    background-color: violet;
+    /* 给父元素 设置 display: flex 则子元素的布局会按照 flex布局排列 */
+    display: flex;
+    flex-direction: row-reverse;
+}
+/* 设置子元素样式 */
+#div0 div{
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    border: 2px solid gold;
+}
+```
+
+flex-direction布局示意图：
+
+![flex-direction布局示意图](assets/README-images/image-20230531170423584.png)
+
+注意事项：
+
+- 设置flex布局后的子元素的水平宽度是根据**父元素宽度以及元素个数计算出来的数值**。
+- 如果**计算的宽度小于元素自身设置的宽度**，则以计算的宽度为为准压缩元素，否则已元素自身宽度为最终宽度。
+
+
+
+**2，换行**
+
+flex-wrap 属性：决定子元素在父元素盒子中的是否换行（列）
+- nowrap ： 默认值。不换行或不换列。
+- wrap： 换行或换列。
+- wrap-reverse：换行或换列，但以相反的顺序。
+
+flex-direction 与 flex-wrap 合并的简写方式
+
+flex-flow 属性
+
+```css
+/* 格式： */
+flex-flow: <flex-direction>  <flex-wrap>
+/* 例子： */
+flex-flow: row wrap;
+```
+
