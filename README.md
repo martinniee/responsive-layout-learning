@@ -851,3 +851,56 @@ flex : 0 0 30px
 ```
 
 `30px` 表示是元素在 **主轴**方向上的长度。主轴是x，则表示宽度，否则表示高度。
+
+
+
+### 课堂案例3-rem的使用方法
+
+HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>flex布局</title>
+        <script>
+            let c = () => {
+                // 获取设备宽度
+                let w = document.documentElement.clientWidth;
+                // 计算根字体
+                let n = (20 * (w / 320) > 40 ? 40 + "px" : (20 * (w / 320)) + "px");
+                // 设置根字体
+                document.documentElement.style.fontSize = n;
+            }
+            window.addEventListener('load', c);
+            window.addEventListener('resize', c);
+        </script>
+        <style>
+            /* 
+            rem VS em 
+            - rem：r 代表 root（根元素），相对 根元素字体大小
+            - em：简单来说 相对 父元素字体大小（自身或继承）
+            */
+            html {
+                /* html即 根元素，默认大小为 16px */
+                font-size: 10px;
+            }
+            div {
+                /* 1 rem = 一个 根元素 字体大小 */
+                font-size: 1rem;
+                /* 等价于 16px */
+            }
+        </style>
+    </head>
+    <body>
+        <div>123</div>
+    </body>
+</html>
+```
+
+效果：05_rem.html
+
+使用移动端模式测试效果，增加/缩小屏幕宽度观察字体大小变化
