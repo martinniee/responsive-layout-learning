@@ -471,13 +471,39 @@ justify-content属性：用于子元素 与 父元素之间存在剩余空间时
 
 HTML
 
-```
+```html
 <div id="div0">
     <div>1</div>
     <div>2</div>
     <div>3</div>
     <div>4</div>
 </div>
+
+<button class="bnt-start">flex-start</button>
+<button class="bnt-end">flex-end</button>
+<button class="bnt-center">center</button>
+<button class="bnt-between">space-between</button>
+<button class="bnt-around">space-around</button>
+
+<script>
+    const div0 = document.querySelector('#div0');
+    const end = document.querySelector('.bnt-around')
+    document.querySelector('.bnt-start').addEventListener('click', () => {
+    div0.style.setProperty('justify-content', 'flex-start')
+    })
+    document.querySelector('.bnt-end').addEventListener('click', () => {
+    div0.style.setProperty('justify-content', 'flex-end')
+    })
+    document.querySelector('.bnt-center').addEventListener('click', () => {
+    div0.style.setProperty('justify-content', 'center')
+    })
+    document.querySelector('.bnt-between').addEventListener('click', () => {
+    div0.style.setProperty('justify-content', 'space-between')
+    })
+    document.querySelector('.bnt-around').addEventListener('click', () => {
+    div0.style.setProperty('justify-content', 'space-around')
+    })
+</script>
 ```
 
 CSS
@@ -500,10 +526,82 @@ CSS
 }
 ```
 
-效果演示：......
+效果演示：01_flex2.html
 
 
 
 
 
 ![justify-content不同属性效果示意图](assets/README-images/image-20230602151631322.png)
+
+### 交叉轴对齐方式
+
+**1， align-items属性： 设置每个flex元素在交叉轴上的默认对齐方式**
+
+- flex-start：位于交叉轴方向的上容器开头
+- flex-end：位于交叉轴方向的上容器结尾
+- center：位于交叉轴方向的上居中位置
+
+**2， align-content 属性 （ align-items 类似）**
+
+
+
+**3，align-items VS align-content**
+
+- align-items    （对多个处理）
+  -  在未设置 align-items 之前，将效果上换行后的每一行视为单独的个体，对多个个体处理，需要考虑个体间空间分配。
+
+- align-content  （对一个处理）
+  - 在未 设置 align-content 之前，将父元素下所有元素视为整体，然后进行处理
+
+
+
+HTML
+
+```html
+<div id="div0">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
+
+<button class="bnt-items" title="在未设置 align-items 之前，将效果上换行后的每一行视为单独的个体，对多个个体处理，需要考虑个体间空间分配。">align-items</button>
+<button class="bnt-content" title="在未 设置 align-content 之前，将父元素下所有元素视为整体，然后进行处理">align-content</button>
+
+<script>
+    const div0 = document.querySelector('#div0');
+    const end = document.querySelector('.bnt-around')
+    document.querySelector('.bnt-items').addEventListener('click', () => {
+        div0.style.removeProperty('align-content')
+        div0.style.setProperty('align-items', 'center')
+    })
+    document.querySelector('.bnt-content').addEventListener('click', () => {
+        div0.style.removeProperty('align-items')
+        div0.style.setProperty('align-content', 'center')
+    })
+</script>
+```
+
+CSS
+
+```css
+#div0 {
+    width: 380px;
+    height: 400px;
+    background-color: violet;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+/* 设置子元素样式 */
+#div0 div {
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+}
+```
+
+效果演示：01_flex3.html
+
