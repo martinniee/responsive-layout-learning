@@ -458,3 +458,52 @@ flex-flow: <flex-direction>  <flex-wrap>
 flex-flow: row wrap;
 ```
 
+
+
+### 剩余空间间隔处理
+
+justify-content属性：用于子元素 与 父元素之间存在剩余空间时，设置间距的方式
+- flex-start： 默认值，从左到右，紧挨着行头
+- flex-end： 从右到左，紧挨着行尾
+- center： 居中显示（水平）
+- space-between： 平均分布在当前行，两边 不留有空间
+- space-around： 平均分布在当前行，两边 留有空间
+
+HTML
+
+```
+<div id="div0">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
+```
+
+CSS
+
+```css
+
+#div0{
+    /* 特殊情况 ，父元素的宽度对于 4个元素不足，对于3个子元素足够，此时会产生剩余空间  */
+    width: 380px;
+    background-color: violet;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+/* 设置子元素样式 */
+#div0 div{
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+}
+```
+
+效果演示：......
+
+
+
+
+
+![justify-content不同属性效果示意图](assets/README-images/image-20230602151631322.png)
