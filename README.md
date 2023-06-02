@@ -687,3 +687,22 @@ flex: 4 3 300px;
 
 
 
+### 给子元素设置伸缩的特殊写法（了解）
+
+```markdown
+----------1 auto 和 none----------
+flex: auto 等价于 flex: 1 1 auto , 自动 扩大，缩小，宽度参照 子元素的初始值
+flex: none 等价于 flex: 0 0 auto , 宽度参照 子元素的初始值
+----------2. 设置单位----------
+flex: 0% 等价于 flex: 1 1 0%
+flex: 100px 等价于 flex: 1 1 100px
+----------3. 设置数字----------
+flex: 1 等价于 flex: 1 1 0%
+flex: <number> ，默认设置的是 grow，即 flex: <number> 1 0%
+flex: <number1> <number2>, 则分别设置 grow, shrink,即 flex: <number1> <number2> 0%
+```
+
+总结：
+- 单位 对应`basis `   而 grow ,   shrink为 `1`
+- 数值 对应 `grow`, `shrink`, 而 basis 为 `0%`
+

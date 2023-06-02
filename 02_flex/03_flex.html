@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局</title>
+    <style>
+        /*
+----------1 auto 和 none----------
+flex: auto 等价于 flex: 1 1 auto , 自动 扩大，缩小，宽度参照 子元素的初始值
+flex: none 等价于 flex: 0 0 auto , 宽度参照 子元素的初始值
+----------2. 设置单位----------
+flex: 0% 等价于 flex: 1 1 0%
+flex: 100px 等价于 flex: 1 1 100px
+----------3. 设置数字----------
+flex: 1 等价于 flex: 1 1 0%
+flex: <number> ，默认设置的是 grow，即 flex: <number> 1 0%
+flex: <number1> <number2>, 则分别设置 grow, shrink,即 flex: <number1> <number2> 0%
+
+总结：
+- 单位 对应basis ,grow ,shrink为1
+- 数值 对应 grow, shrink, basis 为 0%
+        */
+        #div0 {
+            display: flex;
+            width: 400px;
+            height: 500px;
+            background-color: violet;
+        }
+
+        #div0 div {
+            width: 100px;
+            height: 200px;
+            background-color: yellow;
+            /* flex: 1 1 300px */
+            /* flex: 0 0  300px */
+            /* flex: auto;  */
+            /* flex: 150px;  */
+            flex: 2 3; 
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div0">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>
