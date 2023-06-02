@@ -706,3 +706,81 @@ flex: <number1> <number2>, 则分别设置 grow, shrink,即 flex: <number1> <num
 - 单位 对应`basis `   而 grow ,   shrink为 `1`
 - 数值 对应 `grow`, `shrink`, 而 basis 为 `0%`
 
+
+
+### 课堂案例1-输入框布局
+
+HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>课堂案例</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #div0{
+                width: 250px;
+                display: flex;
+                border: 1px solid #dcdcdc;
+            }
+            #div0 label{
+                flex: 1;
+                background-color: #f5f5f5;
+                font-family: '黑体';
+                text-align: center;
+            }
+            #div0 label:nth-child(3){
+                flex:  1 1  25px;
+            }
+            #div0 input{
+                border: none;
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div0">
+            <label >姓名</label>
+            <input type="text" >
+            <label >go</label>
+        </div>
+    </body>
+</html>
+```
+
+效果图 ：
+
+![image-20230603060502810](assets/README-images/image-20230603060502810.png)
+
+假设有一父元素，其下有两个label元素，中间一个input元素。
+
+样式上：父元素宽为 `250px`,子元素input宽度为 `151.5px`，左右label都统一设置了 `flex: 1` , 右label单独设置了 `flex: 1 1 25px`, 左label没设置宽度（初始值）。
+
+上述的 `25px` 是 `flex-basis`，如果元素没设置初始值，则此`flex-basis`作为初始值，也就是右 label宽度为 `25px`。
+
+
+
+情况: 左label没设置初始宽度，若 `父元素宽度 - 其他宽度之和` 有剩余宽度，将 `剩余宽度 / 份数` 得到单位量 p。
+
+相关数据的计算：
+
+剩余宽度 = `父元素宽度 - 其他宽度之和` =  `250px - 151.5px - 25px` = `73.5px `
+
+单位量p  = `剩余宽度 / 份数`  = `73.5px / 2` = `36.75px`
+
+左label宽度 = `剩余宽度 - p * 左元素所占份数` =  `73.5px - (36.75px * 1)` = `36.75px`
+
+右label宽度 = `右label宽度 + p * 右元素所占份数` =  `25px + (36.75px * 1)` =`61.75px`
+
+
+
+总结：只会对设置了 `grow/shrink `的元素进行额外计算（扩充/缩减）。
+- 如果元素设置了初始值（有 flex-basis值），则 `最终的宽度 = 元素宽度 +/- p * 所占份数`
+- 如果元素**没有设置初始值**（没有 flex-basis值），则 `最终的宽度 = 剩余/超出宽度 +/- p * 所占份数`
