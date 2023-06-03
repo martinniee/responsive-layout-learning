@@ -904,3 +904,74 @@ HTML
 效果：05_rem.html
 
 使用移动端模式测试效果，增加/缩小屏幕宽度观察字体大小变化
+
+### 课堂案例4-自适应布局
+
+
+
+自适应布局
+
+- 不同设备对应不同的html
+- 局部自适应
+
+总结：不同的设备用不同的页面或局部伸缩
+
+
+
+HTML
+
+```html
+<div id="div0">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+```
+
+
+
+CSS
+
+```css
+/* 
+自适应布局
+效果：左右div大小不变，中间div宽度随着屏幕宽度变化而相应变化
+*/
+#div0{
+    display: flex;
+}
+#div0 div:first-child{
+    background-color: yellow;
+    flex: 0 0 50px;
+}
+#div0 div:nth-child(2){
+    background-color: red;
+    flex: 1 1  auto;
+
+}
+#div0 div:nth-child(3){
+    background-color: yellow;
+    flex: 0 0 50px;
+
+}
+/* 媒体查询 */
+@media (min-device-width: 400px) and (max-device-width: 500px){
+    #div0 div:nth-child(2){
+        background-color: blue;
+    }
+}
+@media (min-device-width: 501px) and (max-device-width: 600px){
+    #div0 div:nth-child(2){
+        background-color: green;
+    }
+}
+```
+
+
+
+自适应布局
+
+效果：左右div大小不变，中间div宽度随着屏幕宽度变化而相应变化，同时设置媒体查询，中间div的颜色也跟随变化。
+
+
+
