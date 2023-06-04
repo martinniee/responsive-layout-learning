@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 10px;
+        }
+
+        #box {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        #top,
+        #main,
+        #bottom {
+            width: 100%;
+        }
+
+        #top {
+            background-color: rgb(241, 149, 149);
+            text-align: center;
+            height: 2rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            left: 0;
+        }
+
+        #main {
+            position: absolute;
+            height: auto;
+            top: 2rem;
+            bottom: 2rem;
+            border: 2rem;
+            overflow: auto;
+            /* margin-bottom: 2rem; */
+        }
+
+        /* #main::-webkit-scrollbar{
+            display: none;
+        } */
+
+        #main ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* margin-bottom: 2rem; */
+        }
+        
+        #main ul li {
+            flex: 1 1 2rem;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #bottom {
+            background-color: rgb(185, 245, 185);
+            text-align: center;
+            height: 2rem;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="top">TOP</div>
+        <div id="main">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+                <li>21</li>
+                <li>22</li>
+                <li>23</li>
+                <li>24</li>
+                <li>25</li>
+                <li>26</li>
+                <li>27</li>
+                <li>28</li>
+            </ul>
+        </div>
+        <div id="bottom">BOTTOM</div>
+    </div>
+    <script>
+        let c = () => {
+            // 获取设备宽度
+            let w = document.documentElement.clientWidth;
+            // 计算根字体
+            let n = (20 * (w / 320) > 40 ? 40 + "px" : (20 * (w / 320)) + "px");
+            // 设置根字体
+            document.documentElement.style.fontSize = n;
+        }
+        window.addEventListener('load', c);
+        window.addEventListener('resize', c);
+    </script>
+</body>
+
+</html>
