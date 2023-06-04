@@ -1004,3 +1004,17 @@ rem弹性布局
 有关于测试，探究的过程，后期有时间补充一个笔记： [坑]()。
 
 此案例的预览效果（移动端模式预览）：06_layout2\index.html
+
+
+
+
+
+---
+
+**总结flex的使用：**
+
+- 主轴对齐：使用 `justify-content `
+- 交叉轴对齐： 使用 `align-items`  或 `align-content`
+- 子元素伸缩：`flex-basis`,` flex-grow,` `flex-shrink`， 及三者简写` flex: <grow> <shrink> <basis>`
+
+![image-20230604200307457](assets/README-images/image-20230604200307457.png)
