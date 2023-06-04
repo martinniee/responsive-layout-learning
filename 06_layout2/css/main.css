@@ -1,0 +1,95 @@
+/* 移除默认样式 */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+/* 设置根元素 字体大小为 10px */
+html {
+	font-size: 10px;
+}
+#div0 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+#top,
+#main,
+#bottom {
+	width: 100%;
+}
+/* ----------top---------- */
+#top {
+	position: fixed; /* 固定位置 */
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2rem;
+	z-index: 1000;
+	background-color: #f5f5f5;
+}
+#logo {
+	width: 2rem;
+	height: 2rem;
+	vertical-align: -webkit-baseline-middle; /* 垂直居中 */
+}
+/* ----------main---------- */
+#main {
+	position: absolute;
+	height: auto;
+	top: 2rem;
+	bottom: 2rem;
+	border: 2rem;
+	background-color: #f5f5f5;
+     /* 解决当子元素内容过长，大于父元素高度而导致子元素内容查看不全  */
+	overflow: auto;
+	/* margin-bottom: 2rem; */
+}
+/* #main::-webkit-scrollbar{
+    display: none;
+} */
+#main ul {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-size: 0.6rem;
+	/* margin-bottom: 2rem; */
+}
+#main ul li {
+	display: flex;
+	flex: 1 1 2rem;
+	justify-content: space-around;
+	align-items: center;
+}
+#main ul li div {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+.explore {
+	/* 探索图片 */
+	width: 1.5rem;
+	height: 1.5rem;
+	vertical-align: -webkit-baseline-middle; /* 垂直居中 */
+}
+.cover {
+	/* 封面图片 */
+	width: 3.6rem;
+	height: 2rem;
+	vertical-align: -webkit-baseline-middle; /* 垂直居中 */
+}
+/* ----------bottom---------- */
+#bottom {
+	position: fixed; /* 固定位置 */
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 2rem;
+	z-index: 1000;
+	background-color: #f5f5f5;
+	display: flex;
+	justify-content: space-around;
+}
+#bottom div img {
+	width: 2rem;
+	height: 2rem;
+	vertical-align: -webkit-baseline-middle;
+}
