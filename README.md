@@ -526,7 +526,7 @@ CSS
 }
 ```
 
-效果演示：01_flex2.html
+效果演示：https://htmlpreview.github.io/?https://github.com/martinniee/responsive-layout-learning/blob/main/02_flex/01_flex2.html
 
 
 
@@ -603,7 +603,7 @@ CSS
 }
 ```
 
-效果演示：01_flex3.html
+效果演示：https://htmlpreview.github.io/?https://github.com/martinniee/responsive-layout-learning/blob/main/02_flex/01_flex3.html
 
 ### 子元素设置伸缩比例flex属性
 
@@ -683,7 +683,7 @@ flex: 4 3 300px;
 
 
 
-演示效果：02_flex.html
+演示效果：https://htmlpreview.github.io/?https://github.com/martinniee/responsive-layout-learning/blob/main/02_flex/02_flex.html
 
 
 
@@ -901,7 +901,7 @@ HTML
 </html>
 ```
 
-效果：05_rem.html
+效果：https://htmlpreview.github.io/?https://github.com/martinniee/responsive-layout-learning/blob/main/02_flex/05_rem.html
 
 使用移动端模式测试效果，增加/缩小屏幕宽度观察字体大小变化
 
@@ -983,7 +983,7 @@ CSS
 
 
 
-效果见：layout1.html
+效果见：https://htmlpreview.github.io/?https://github.com/martinniee/responsive-layout-learning/blob/main/04_layout1/layout1.html
 
 > 主要是 css 部分内容多，需要结合布局分析
 
@@ -1003,7 +1003,7 @@ rem弹性布局
 
 有关于测试，探究的过程，后期有时间补充一个笔记： [坑]()。
 
-此案例的预览效果（移动端模式预览）：06_layout2\index.html
+此案例的预览效果（移动端模式预览）：https://htmlpreview.github.io/?https://github.com/martinniee/responsive-layout-learning/blob/main/05_layout2/index.html
 
 
 
